@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportReserva - Sistema de Reservas de Canchas</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-futbol me-2"></i>SportReserva
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#canchas">Canchas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mis-reservas">Mis Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <button class="btn btn-light ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="fas fa-user"></i> Iniciar Sesión
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Reserva tu Cancha Deportiva</h1>
+            <p class="lead">Encuentra y reserva las mejores canchas de tu ciudad de manera fácil y rápida</p>
+            <a href="#canchas" class="btn btn-success btn-lg">Ver Canchas Disponibles</a>
+        </div>
+    </section>
+
+    <!-- Sección de Canchas -->
+    <section id="canchas" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Canchas Disponibles</h2>
+            
+            <!-- Filtros -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <select class="form-select" id="filtroDeporte">
+                        <option value="">Todos los deportes</option>
+                        <option value="futbol">Fútbol</option>
+                        <option value="tenis">Tenis</option>
+                        <option value="padel">Pádel</option>
+                        <option value="baloncesto">Baloncesto</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="filtroCiudad">
+                        <option value="">Todas las ciudades</option>
+                        <option value="madrid">Madrid</option>
+                        <option value="barcelona">Barcelona</option>
+                        <option value="valencia">Valencia</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input type="date" class="form-control" id="filtroFecha">
+                </div>
+            </div>
+
+            <!-- Grid de Canchas -->
+            <div class="row" id="canchas-grid">
+                <!-- Las canchas se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: Mis Reservas -->
+    <section id="mis-reservas" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Mis Reservas</h2>
+            <div class="row" id="reservas-container">
+                <!-- Las reservas se cargarán dinámicamente aquí -->
+            </div>
+            <div id="sin-reservas" class="text-center py-5 d-none">
+                <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
+                <h4 class="text-muted">No tienes reservas aún</h4>
+                <p>¡Explora nuestras canchas y haz tu primera reserva!</p>
+                <a href="#canchas" class="btn btn-success mt-3">Ver Canchas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Reserva Modal -->
+    <div class="modal fade" id="reservaModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Realizar Reserva</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formReserva">
+                        <div class="mb-3">
+                            <label class="form-label">Cancha</label>
+                            <input type="text" class="form-control" id="canchaNombre" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="fechaReserva" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Hora de inicio</label>
+                            <select class="form-select" id="horaInicio" required>
+                                <option value="">Seleccionar hora</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Duración (horas)</label>
+                            <select class="form-select" id="duracion" required>
+                                <option value="1">1 hora</option>
+                                <option value="2">2 horas</option>
+                                <option value="3">3 horas</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombreReserva" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono <small class="text-muted">(formato: 229-133-9124)</small></label>
+                            <input type="tel" class="form-control" id="telefonoReserva" placeholder="229-133-9124" maxlength="12" required onkeyup="formatearTelefono(this)">
+                            <div class="form-text">Ingrese 10 dígitos, se formateará automáticamente</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailReserva" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="guardarReserva()">Confirmar Reserva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Inicio de Sesión -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Iniciar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Contacto CORREGIDA - Solo el formulario, sin el cuadro de información -->
+    <section id="contacto" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Contáctanos</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <form>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Nombre</label>
+                                    <input type="text" class="form-control form-control-lg" placeholder="Tu nombre">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Email</label>
+                                    <input type="email" class="form-control form-control-lg" placeholder="tu@email.com">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Mensaje</label>
+                                    <textarea class="form-control form-control-lg" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-futbol me-2"></i>SportReserva</h5>
+                    <p>Tu mejor opción para reservar canchas deportivas</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 SportReserva. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

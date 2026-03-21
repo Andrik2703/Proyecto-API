@@ -1,0 +1,148 @@
+/* Estilos personalizados */
+:root {
+    --primary-green: #28a745;
+    --dark-green: #218838;
+    --light-gray: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0;
+    margin-bottom: 30px;
+}
+
+/* Tarjetas de canchas */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    color: var(--dark-green);
+    font-weight: bold;
+}
+
+.card-text i {
+    color: var(--primary-green);
+    width: 20px;
+}
+
+/* Precio */
+.precio {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-green);
+}
+
+/* Botones */
+.btn-success {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-success:hover {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+}
+
+/* Badges */
+.badge {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.badge.bg-success {
+    background-color: var(--primary-green) !important;
+}
+
+/* Modal */
+.modal-header.bg-success {
+    background-color: var(--primary-green) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 100px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilos mejorados para el formulario de contacto */
+#contacto form {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+#contacto .form-control-lg {
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+#contacto .form-control-lg:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+#contacto .btn-lg {
+    padding: 12px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+#contacto .btn-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Responsive para el formulario de contacto */
+@media (max-width: 768px) {
+    #contacto form {
+        padding: 20px;
+    }
+    
+    #contacto .btn-lg {
+        width: 100%;
+    }
+}
