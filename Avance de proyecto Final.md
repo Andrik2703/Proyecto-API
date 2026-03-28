@@ -58,15 +58,15 @@ GET	/docs	Documentación Swagger	N/A	Interfaz Swagger UI
 ## 5. Evidencias de Funcionamiento
 *(Instrucciones: Pega aquí las capturas de pantalla de tu terminal o herramientas)*
 
+<img width="698" height="180" alt="image" src="https://github.com/user-attachments/assets/18fcc71a-0150-4532-8830-61e996f7b74f" />
 
-### A. Contenedores en Ejecución
-> [Pega aquí captura de `docker ps` o Docker Desktop donde se vea el contenedor activo]
+<img width="713" height="147" alt="image" src="https://github.com/user-attachments/assets/bbb82424-2dd7-4f03-b685-3f22af843c2f" />
 
-### B. Conexión a Base de Datos
-> [Pega aquí captura de los logs de la consola donde se confirme la conexión exitosa a la DB]
+<img width="608" height="299" alt="image" src="https://github.com/user-attachments/assets/2a6fbb9c-1003-400a-9a90-28232e997039" />
 
-### C. Prueba de Endpoint (Postman/Thunder Client)
-> [Pega aquí captura de una petición exitosa a uno de tus endpoints]
+<img width="663" height="359" alt="image" src="https://github.com/user-attachments/assets/ed22cee1-b8dd-431b-94d0-d454a554c6c2" />
+
+<img width="650" height="387" alt="image" src="https://github.com/user-attachments/assets/b8f38f7d-8331-4fff-8d36-627955c4e38f" />
 
 ---
 
